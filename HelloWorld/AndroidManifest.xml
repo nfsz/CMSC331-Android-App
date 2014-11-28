@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.helloworld"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- use permissions -->
+    <!-- can we keep it false? -->
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- android:minSdkVersion="16" OR...8??? -->
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="21" />
+    <!-- need to change @drawable/ic_launcher (icon) -->
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
+
+        <!-- @style/AppTheme -->
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- A child of the main activity -->
+        <!-- Does this child class go here or outside and below as the auto-generator placed it -->
+        <activity
+            android:name=".GoActive"
+            android:label="@string/title_GoActive"
+            android:parentActivityName=".MainActivity" >
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.helloworld.MainActivity" />
+        </activity>
+        <activity
+            android:name=".LandmarkIt"
+            android:label="@string/title_activity_landmark_it"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.helloworld.MainActivity" />
+        </activity>
+        <activity
+            android:name=".DatabaseActivity"
+            android:label="@string/title_activity_database"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActiviy" />
+        </activity>
+
+    </application>
+
+</manifest><!--
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <application>
+        <activity android:name="com.example.helloworld.GoActive"
+            android:label="@string/title_activity_go_active"
+            android:parentActivityName="com.example.helloworld.MainActivity">
+        	
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.helloworld.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
+-->
+
+

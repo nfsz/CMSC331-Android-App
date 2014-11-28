@@ -1,0 +1,31 @@
+
+    <menu xmlns:android="http://schemas.android.com/apk/res/android">
+   <!-- I NOTICED THAT EACH ACTIVITY NEEDS TO INITIALIZE EACH AND EVERY ITEM, IS THERE A WAY TO REFERENCE THE MAIN INITIALIZATION? -->
+    <!-- Settings, should always be in the overflow -->
+    <!-- goActive -->
+        <item android:id="@+id/action_go_active"
+          android:icon="@drawable/ic_action_go_active"
+          android:title="@string/action_goActive"
+          android:showAsAction="never" />
+    <!-- landmarkIt -->
+        <item android:id="@+id/action_landmark_it"
+          android:icon="@drawable/ic_action_landmark_it"
+          android:title="@string/action_landmarkIt"
+          android:showAsAction="ifRoom" />
+    <!-- search -->
+    <item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="@string/action_search"
+          android:showAsAction="never" />
+    <!-- home -->
+       <item android:id="@+id/action_home"
+          android:icon="@drawable/ic_action_home"
+          android:title="@string/action_search"
+          android:showAsAction="ifRoom" />
+       
+    <!-- Settings, should always be in the overflow -->
+    <item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:showAsAction="never" />  
+          
+    </menu>
