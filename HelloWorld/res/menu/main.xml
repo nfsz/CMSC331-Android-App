@@ -1,17 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.helloworld.MainActivity" >
-    
+    tools:context="com.example.helloworld.MainFragment" >
+
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
-    
-    <!-- showAsAction= never (is placed in overflow)
-    					ifRoom (is on menu bar when possible
-     -->
-    
+        android:showAsAction="never"
+        android:title="@string/action_settings"/>
 
 </menu>

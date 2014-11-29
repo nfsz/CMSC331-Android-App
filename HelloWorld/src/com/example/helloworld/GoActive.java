@@ -1,16 +1,17 @@
 package com.example.helloworld;
 
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 
-public class GoActive extends Activity {
+public class GoActive extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -22,6 +22,11 @@
     <string name="default_landmark_description">What\'s so special about this place?</string>
     <string name="title_activity_database">DatabaseActivity</string>
     <string name="button_submit_landmark">Submit</string>
-    
+    <string name="title_activity_main_fragment">MainFragment</string>
+    <string name="authors">Patrick McElvaney\nMatt Landen\nNasif Sikder</string>
+    <string name="title_activity_splash">SPLASH</string>
+    <string name="title_activity_main_flipper">MainFlipper</string>
+    <string name="title_activity_slider_preferences">SliderPreferences</string>
+    <string name="title_activity_sqlconnect">SQLconnect</string>
 
 </resources>

@@ -2,18 +2,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
-	android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-        
-     <Button
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp" >
+
+    <Button
         android:id="@+id/button_go_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_go_active"
-        android:layout_alignParentTop="true" 
         android:layout_alignParentRight="true"
-        android:onClick="goActive"/>
-     <!--  
+        android:layout_alignParentTop="true"
+        android:onClick="goActive"
+        android:text="@string/button_go_active" />
+
+    <ViewFlipper
+        android:id="@+id/maincontainer"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_width="128dp"
+        android:layout_height="128dp" >
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/button_go_active"
+            android:src="@drawable/ic_action_go_active"
+            android:onClick="goActive" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/button_landmark_it"
+            android:src="@drawable/ic_action_landmark_it"
+            android:onClick="goLandmarkIt" />
+    </ViewFlipper>
+
+    <!--
+      <fragment
+        android:id="@+id/main_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       	 class="com.example.helloworld.MainFragment" />
+       	 
+            -->
+    <!--
      <EditText android:id="@+id/edit_password_message"
         android:inputType="textPassword"
         android:layout_height="wrap_content"
@@ -37,13 +70,14 @@
         android:layout_height="wrap_content"
         android:text="@string/button_go" 
         android:layout_below="@id/edit_password_message"/>
-     -->
-     <Button
+    -->
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_landmark_it"
-        android:layout_alignParentBottom="true" 
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:onClick="goLandmarkIt" />
-</RelativeLayout>
+        android:onClick="goLandmarkIt"
+        android:text="@string/button_landmark_it" />
 
+</RelativeLayout>
