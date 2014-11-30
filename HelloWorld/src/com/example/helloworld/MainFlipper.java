@@ -1,17 +1,13 @@
 package com.example.helloworld;
 
 import android.app.Activity;
-
-//import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-
 import android.view.Menu;
 import android.view.MenuItem;
-
 import android.view.View;
-
-import android.widget.ViewFlipper;
 import android.view.View.OnClickListener;
+import android.widget.ViewFlipper;
+//import android.content.DialogInterface.OnClickListener;
 
 public class MainFlipper extends Activity implements OnClickListener {
 	ViewFlipper mainFlipper;

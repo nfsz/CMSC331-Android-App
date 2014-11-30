@@ -1,16 +1,11 @@
 package com.example.helloworld;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 
 public class SQLconnect extends AsyncTask<String, Void, String> {
 	protected void onPreExecute() {
