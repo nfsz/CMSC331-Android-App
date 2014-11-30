@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.example.helloworld.DatabaseActivity" >
+    tools:context="com.example.CulturalRetriever.DatabaseActivity" >
 
     <!--
         Shouldn't ever see this page. Background event 

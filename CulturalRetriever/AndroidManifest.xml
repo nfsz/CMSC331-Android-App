@@ -28,7 +28,7 @@
 
         <!-- @style/AppTheme -->
         <activity
-            android:name=".Splash"
+            android:name="com.example.CulturalRetriever.Splash"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.CulturalRetriever.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="com.example.helloworld.MAINACTIVITY" />
@@ -48,9 +48,9 @@
         <!-- A child of the main activity -->
         <!-- Does this child class go here or outside and below as the auto-generator placed it -->
         <activity
-            android:name=".GoActive"
+            android:name="com.example.CulturalRetriever.GoActive"
             android:label="@string/title_GoActive"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.example.CulturalRetriever.MainActivity" >
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -58,35 +58,35 @@
                 android:value="com.example.helloworld.MainActivity" />
         </activity>
         <activity
-            android:name=".LandmarkIt"
+            android:name="com.example.CulturalRetriever.LandmarkIt"
             android:label="@string/title_activity_landmark_it"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.example.CulturalRetriever.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.helloworld.MainActivity" />
         </activity>
         <activity
-            android:name=".DatabaseActivity"
+            android:name="com.example.CulturalRetriever.DatabaseActivity"
             android:label="@string/title_activity_database"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName="com.example.CulturalRetriever.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActiviy" />
         </activity>
         <activity
-            android:name=".MainFragment"
+            android:name="com.example.CulturalRetriever.MainFragment"
             android:label="@string/title_activity_main_fragment" >
         </activity>
         <activity
-            android:name=".MainFlipper"
+            android:name="com.example.CulturalRetriever.MainFlipper"
             android:label="@string/title_activity_main_flipper" >
         </activity>
         <activity
-            android:name=".SliderPreferences"
+            android:name="com.example.CulturalRetriever.SliderPreferences"
             android:label="@string/title_activity_slider_preferences" >
         </activity>
         <activity
-            android:name=".SQLconnect"
+            android:name="com.example.CulturalRetriever.SQLconnect"
             android:label="@string/title_activity_sqlconnect" >
         </activity>
     </application>
