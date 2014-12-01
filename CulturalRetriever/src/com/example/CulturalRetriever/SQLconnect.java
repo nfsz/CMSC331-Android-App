@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+import android.location.Location;
 import android.os.AsyncTask;
 
 public class SQLconnect extends AsyncTask<String, Void, String> {
@@ -19,6 +20,7 @@ public class SQLconnect extends AsyncTask<String, Void, String> {
 			String tfDescription = (String) params[0];
 			String tfExpirationDate = (String) params[1];
 			String linker = (String) params[2];
+			Location loc = LocationListener.GetLocation();
 			String link = "http://userpages.umbc.edu/~mcpat1/331/androidSQLSubmitPage.php";
 			String data = URLEncoder.encode("tfDescription", "UTF-8") + "="
 					+ URLEncoder.encode(tfDescription, "UTF-8");

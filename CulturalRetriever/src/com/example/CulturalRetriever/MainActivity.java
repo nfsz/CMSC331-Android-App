@@ -3,7 +3,9 @@ package com.example.CulturalRetriever;
 
 import com.example.helloworld.R;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.ActionBarActivity;
@@ -51,9 +53,8 @@ public class MainActivity extends ActionBarActivity
         // listener.
        mDetector.setOnDoubleTapListener(this);
        usedDetector = new GestureDetectorCompat(this, new MyGestureListener()); 
-       
-       
-       
+       LocationManager loc = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+       loc.requestLocationUpdates(LocationManager.GPS_PROVIDER,0, 0, new LocationListener());
        
 	}
        
