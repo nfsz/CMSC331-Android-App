@@ -12,6 +12,7 @@ public class SQLconnect extends AsyncTask<String, Void, String> {
 	protected void onPreExecute() {
 
 	}
+	
 
 	@Override
 	protected String doInBackground(String... params) {
