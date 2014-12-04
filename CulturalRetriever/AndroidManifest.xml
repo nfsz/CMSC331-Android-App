@@ -43,7 +43,9 @@
         <!-- @style/AppTheme -->
         <activity
             android:name="com.example.CulturalRetriever.Splash"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait" >
+            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,7 +54,8 @@
         </activity>
         <activity
             android:name="com.example.CulturalRetriever.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.example.helloworld.MAINACTIVITY" />
 
@@ -64,7 +67,8 @@
         <activity
             android:name="com.example.CulturalRetriever.GoActive"
             android:label="@string/title_GoActive"
-            android:parentActivityName="com.example.CulturalRetriever.MainActivity" >
+            android:parentActivityName="com.example.CulturalRetriever.MainActivity" 
+            android:screenOrientation="portrait" >
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
@@ -74,7 +78,8 @@
         <activity
             android:name="com.example.CulturalRetriever.LandmarkIt"
             android:label="@string/title_activity_landmark_it"
-            android:parentActivityName="com.example.CulturalRetriever.MainActivity" >
+            android:parentActivityName="com.example.CulturalRetriever.MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.helloworld.MainActivity" />
@@ -89,19 +94,23 @@
         </activity>
         <activity
             android:name="com.example.CulturalRetriever.MainFragment"
-            android:label="@string/title_activity_main_fragment" >
+            android:label="@string/title_activity_main_fragment" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.CulturalRetriever.MainFlipper"
-            android:label="@string/title_activity_main_flipper" >
+            android:label="@string/title_activity_main_flipper" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.CulturalRetriever.SliderPreferences"
-            android:label="@string/title_activity_slider_preferences" >
+            android:label="@string/title_activity_slider_preferences" 
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.CulturalRetriever.SQLconnect"
-            android:label="@string/title_activity_sqlconnect" >
+            android:label="@string/title_activity_sqlconnect" 
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

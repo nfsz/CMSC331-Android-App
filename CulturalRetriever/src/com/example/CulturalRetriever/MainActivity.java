@@ -19,7 +19,7 @@ import android.view.View;
 import android.widget.ViewFlipper;
 //import android.widget.EditText;
 
-
+//hi
 public class MainActivity extends ActionBarActivity  
 	implements MainFragment.OnCentralSelectedListener, 
 	GestureDetector.OnGestureListener,
