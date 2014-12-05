@@ -1,11 +1,11 @@
 package com.example.CulturalRetriever;
 
-import java.io.File;
+import java.io.File; 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.helloworld.R;
+import com.example.CulturalRetriever.R;
 
 import android.app.Activity;
 import android.content.Intent;

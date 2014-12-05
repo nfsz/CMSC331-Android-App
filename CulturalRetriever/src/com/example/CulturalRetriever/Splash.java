@@ -1,6 +1,6 @@
 package com.example.CulturalRetriever;
 
-import com.example.helloworld.R;
+import com.example.CulturalRetriever.R;
 
 import android.app.Activity;
 import android.content.Intent;

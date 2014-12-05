@@ -2,39 +2,28 @@ package com.example.CulturalRetriever;
 
 
 
-import com.example.helloworld.R;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
+
+import com.example.CulturalRetriever.R;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 
 
-public class GoActive extends ActionBarActivity {
-
+public class GoActive extends FragmentActivity {
+	private GoogleMap map;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
+		super.onCreate(savedInstanceState);    
+		setContentView(R.layout.activity_go_active);
+	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
 		
-		
-	    // Get the message from the intent
-	    Intent intent = getIntent();
-	    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-	    // Create the text view
-	    TextView textView = new TextView(this);
-	    textView.setTextSize(14);
-	    textView.setText(message);
-	    
-	    
-	    // Set the text view as the activity layout
-	    //setContentView(R.layout.activity_go_active);
-	    setContentView(textView);
-	    
 	}
 
     @Override
