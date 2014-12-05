@@ -1,17 +1,22 @@
 package com.example.CulturalRetriever;
 
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.content.Intent;
+import android.location.Location;
+import android.net.wifi.p2p.WifiP2pManager.ActionListener;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.CulturalRetriever.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 
 public class GoActive extends FragmentActivity {
@@ -21,9 +26,9 @@ public class GoActive extends FragmentActivity {
 		super.onCreate(savedInstanceState);    
 		setContentView(R.layout.activity_go_active);
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
-		
+	    Timer beat = new Timer();
+	    
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
 	}
 
     @Override
@@ -84,4 +89,18 @@ public class GoActive extends FragmentActivity {
               return rootView;
         }
     }*/
+	
+	private class MoveBeat extends TimerTask{
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			Location loc = LocationListener.GetLocation();
+			map.addPolyline(new PolylineOptions().add(new LatLng(loc.getLatitude(),loc.getLongitude())));
+		}
+		
+
+				
+	}
+	
 }
