@@ -24,7 +24,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class DatabaseActivity extends Activity {
-
+	private int rl;
+	private int cl;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -36,8 +37,8 @@ public class DatabaseActivity extends Activity {
 				"entry6", "entry7" };
 		String[] column = { "Description", "Date Created", "Expiration Date",
 				"Photo URL" };
-		int rl = row.length;
-		int cl = column.length;
+		rl = row.length;
+		cl = column.length;
 
 		Log.d("--", "R-Lenght--" + rl + "   " + "C-Lenght--" + cl);
 		// enabled scroll for large data
@@ -65,16 +66,19 @@ public class DatabaseActivity extends Activity {
 			BufferedReader in = new BufferedReader(new InputStreamReader(
 					response.getEntity().getContent()));
 			//
-			StringBuffer sb = new StringBuffer("");
-			//String[] results;
+			//StringBuffer sb = new StringBuffer("");
+			String[][] results = new String[rl][cl];
 			String line = "";
+			int row = 0;
+			int column = 0;
 			while ((line = in.readLine()) != null) {
-				sb.append(line);
-				//break;
+				results[row][column] = line;
+				column++;
+				if (column == cl){
+					column = 0;
+					row++;
+				}
 			}
-			//String[] results = sb.toString();
-			//return results;
-
 			// //////////////////////////////
 		} catch (Exception e) {
 
