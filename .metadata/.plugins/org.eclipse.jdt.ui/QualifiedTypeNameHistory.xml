@@ -10,10 +10,11 @@
 <fullyQualifiedTypeName name="com.example.CulturalRetriever.R.layout"/>
 <fullyQualifiedTypeName name="android.net.wifi.p2p.WifiP2pManager.ActionListener"/>
 <fullyQualifiedTypeName name="java.util.Timer"/>
-<fullyQualifiedTypeName name="java.util.TimerTask"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.Polyline"/>
-<fullyQualifiedTypeName name="android.location.Location"/>
-<fullyQualifiedTypeName name="com.example.CulturalRetriever.LocationListener"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.PolylineOptions"/>
+<fullyQualifiedTypeName name="android.location.Location"/>
 <fullyQualifiedTypeName name="com.google.android.gms.maps.model.LatLng"/>
+<fullyQualifiedTypeName name="com.example.CulturalRetriever.LocationListener"/>
+<fullyQualifiedTypeName name="java.util.TimerTask"/>
+<fullyQualifiedTypeName name="com.example.CulturalRetriever.GoActive.MoveBeat"/>
 </qualifiedTypeNameHistroy>

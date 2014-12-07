@@ -27,7 +27,8 @@ public class GoActive extends FragmentActivity {
 		setContentView(R.layout.activity_go_active);
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
 	    Timer beat = new Timer();
-	    
+	    TimerTask task = new MoveBeat();
+	    beat.scheduleAtFixedRate(task, 5000, 1000);
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	}
 
@@ -90,17 +91,19 @@ public class GoActive extends FragmentActivity {
         }
     }*/
 	
-	private class MoveBeat extends TimerTask{
-
+	public class MoveBeat extends TimerTask{
+		private Location old = LocationListener.GetLocation();
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
 			Location loc = LocationListener.GetLocation();
-			map.addPolyline(new PolylineOptions().add(new LatLng(loc.getLatitude(),loc.getLongitude())));
+			
+			if(loc != null && (loc.getLatitude() != old.getLatitude() || loc.getLongitude() != old.getLongitude())){
+				map.addPolyline(new PolylineOptions().add(new LatLng(loc.getLatitude(),loc.getLongitude())
+					,new LatLng(old.getLatitude(), old.getLongitude())));
+			
+				old = loc;
+			}
 		}
-		
-
-				
 	}
-	
 }
