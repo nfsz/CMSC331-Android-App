@@ -216,6 +216,12 @@ public class LandmarkIt extends Activity {
 		mediaScanIntent.setData(contentUri);
 		this.sendBroadcast(mediaScanIntent);
 	}
+	@Override
+	protected void onPause(){
+		super.onPause();
+		//end landmark it
+		finish();
+	}
 
 	/*
 	 * private void submitToDB(View view) { // this is a background event... //
