@@ -1,7 +1,7 @@
 package com.example.CulturalRetriever;
 
 
-import com.example.CulturalRetriever.R;
+
 
 import android.content.Context;
 import android.content.Intent;
@@ -53,8 +53,8 @@ public class MainActivity extends ActionBarActivity
         // listener.
        mDetector.setOnDoubleTapListener(this);
        usedDetector = new GestureDetectorCompat(this, new MyGestureListener()); 
-       LocationManager loc = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-       loc.requestLocationUpdates(LocationManager.GPS_PROVIDER,0, 0, new LocationListener());
+       //LocationManager loc = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+       //loc.requestLocationUpdates(LocationManager.GPS_PROVIDER,0, 0, new LocationListener());
        
 	}
        
@@ -214,15 +214,23 @@ public class MainActivity extends ActionBarActivity
     @Override
     public boolean onFling(MotionEvent event1, MotionEvent event2, 
             float velocityX, float velocityY) {
-        Log.d(DEBUG_TAG, "onFling: " + event1.toString()+event2.toString());
+    	Log.d(DEBUG_TAG, "onFling: " + event1.toString()+event2.toString());
+        if(event1.getY() - event2.getY() > 0){
         mainFlipper.animate().setDuration(2000).alpha(0); //might need to tweak the duration
         mainFlipper.setOutAnimation(MainActivity.this, R.anim.abc_slide_out_top);
         mainFlipper.animate().alpha(1);
         mainFlipper.setInAnimation(MainActivity.this, R.anim.abc_slide_in_bottom);
         mainFlipper.showNext();
-        
+        }else{
+        mainFlipper.animate().setDuration(2000).alpha(0); //might need to tweak the duration
+        mainFlipper.setOutAnimation(MainActivity.this, R.anim.abc_slide_out_bottom);
+        mainFlipper.animate().alpha(1);
+        mainFlipper.setInAnimation(MainActivity.this, R.anim.abc_slide_in_top);
+        mainFlipper.showPrevious();
+        }
         return true;
     }
+
 
     @Override
     public void onLongPress(MotionEvent event) {

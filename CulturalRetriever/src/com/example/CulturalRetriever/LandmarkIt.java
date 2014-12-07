@@ -1,13 +1,14 @@
 package com.example.CulturalRetriever;
 
-import java.io.File; 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
-import com.example.CulturalRetriever.R;
-
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,13 +17,19 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 //import android.widget.TextView;
 
-public class LandmarkIt extends Activity implements OnClickListener {
-	Button sqlSubmit;
-	EditText landmarkDescription;
+public class LandmarkIt extends Activity {
+	private EditText landmarkDescription;
+	private DatePicker datePicker;
+	private Calendar calendar;
+	private TextView dateView;
+	private int year, month, day;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,53 +58,90 @@ public class LandmarkIt extends Activity implements OnClickListener {
 		// //////setContentView(textView);
 
 		setContentView(R.layout.activity_landmark_it);
-		sqlSubmit = (Button) findViewById(R.id.button_submit_landmark);
 		landmarkDescription = (EditText) findViewById(R.id.response_landmark_description);
+		dateView = (TextView) findViewById(R.id.textView3);
+		calendar = Calendar.getInstance();
+		year = calendar.get(Calendar.YEAR);
+		month = calendar.get(Calendar.MONTH);
+		day = calendar.get(Calendar.DAY_OF_MONTH);
+		showDate(year, month + 1, day);
 
-		sqlSubmit.setOnClickListener(this);
-		landmarkDescription.setOnClickListener(this);
+	}
+
+	public void startSQL(View view) {
+		String desc = landmarkDescription.getText().toString();
+		String expDate = dateView.getText().toString();
+		String linker = mCurrentPhotoPath;
+		new SQLconnect().execute(desc, expDate, linker );
+		Intent intent = new Intent(this, DatabaseActivity.class);
+		startActivity(intent);
+	}
+
+	// @Override
+	// public void onClick(View v) {
+
+	// switch (v.getId()) {
+	// case R.id.button_submit_landmark:
+	// String desc = landmarkDescription.getText().toString();
+	// String expDate = getText(R.id.response_expiration).toString();
+	// new SQLconnect().execute(desc); //add espDate
+	// Intent intent = new Intent(this, DatabaseActivity.class);
+	// startActivity(intent);
+	// break;
+	// case R.id.response_landmark_description:
+	// break;
+	// }
+	// }
+
+	/*
+	 * @Override public boolean onCreateOptionsMenu(Menu menu) {
+	 * super.onCreateOptionsMenu(menu); // Inflate the menu; this adds items to
+	 * the action bar MenuInflater inflater = getMenuInflater();
+	 * inflater.inflate(R.menu.landmark_it_activity_actions, menu); return true;
+	 * }
+	 * 
+	 * @Override public boolean onOptionsItemSelected(MenuItem item) { // Handle
+	 * action bar item clicks here. The action bar will // automatically handle
+	 * clicks on the Home/Up button, so long // as you specify a parent activity
+	 * in AndroidManifest.xml. switch (item.getItemId()) { case
+	 * R.id.action_settings: return true; case R.id.button_submit_landmark:
+	 * submitToDB(null); return true; } return
+	 * super.onOptionsItemSelected(item); }
+	 */
+
+	@SuppressWarnings("deprecation")
+	public void setDate(View view) {
+		showDialog(999);
+		Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT)
+				.show();
 	}
 
 	@Override
-	public void onClick(View v) {
+	protected Dialog onCreateDialog(int id) {
 		// TODO Auto-generated method stub
-		switch (v.getId()) {
-		case R.id.button_submit_landmark:
-			String desc = getText(R.id.response_landmark_description)
-					.toString();
-			String expDate = getText(R.id.response_expiration).toString();
-			new SQLconnect().execute(desc, expDate, mCurrentPhotoPath);
-			//Intent intent = new Intent(this, DatabaseActivity.class);
-			//startActivity(intent);
-			break;
-		case R.id.response_landmark_description:
-			break;
+		if (id == 999) {
+			return new DatePickerDialog(this, myDateListener, year, month, day);
 		}
+		return null;
 	}
 
-	/*@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		// Inflate the menu; this adds items to the action bar
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.landmark_it_activity_actions, menu);
-		return true;
-	}
+	   private DatePickerDialog.OnDateSetListener myDateListener
+	   = new DatePickerDialog.OnDateSetListener() {
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
-		case R.id.button_submit_landmark:
-			submitToDB(null);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}*/
+	   @Override
+	   public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+	      // TODO Auto-generated method stub
+	      // arg1 = year
+	      // arg2 = month
+	      // arg3 = day
+	      showDate(arg1, arg2+1, arg3);
+	   }
+	   };
+
+	private void showDate(int year, int month, int day) {
+		dateView.setText(new StringBuilder().append(month).append("/")
+				.append(day).append("/").append(year));
+	}
 
 	String mCurrentPhotoPath;
 
@@ -145,7 +189,25 @@ public class LandmarkIt extends Activity implements OnClickListener {
 			}
 		}
 	}
-
+		private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1;
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
+	        if (resultCode == RESULT_OK) {
+	            // Image captured and saved to fileUri specified in the Intent
+	            Toast.makeText(this, "Image saved to:\n" +
+	                     data.getData(), Toast.LENGTH_LONG).show();
+	        } else if (resultCode == RESULT_CANCELED) {
+	            // User cancelled the image capture
+	        	finish();
+	        } else {
+	            // Image capture failed, advise user
+	        	Toast.makeText(this, "Landmark Capture Failed, consider restarting app"
+	        			,Toast.LENGTH_LONG).show();
+	        }
+	    }
+	}
 	private void galleryAddPic() {
 		Intent mediaScanIntent = new Intent(
 				Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
@@ -155,11 +217,10 @@ public class LandmarkIt extends Activity implements OnClickListener {
 		this.sendBroadcast(mediaScanIntent);
 	}
 
-	/*private void submitToDB(View view) {
-		// this is a background event...
-		// might return success status of submission.
-		Intent intent = new Intent(this, DatabaseActivity.class);
-		startActivity(intent);
-	}*/
+	/*
+	 * private void submitToDB(View view) { // this is a background event... //
+	 * might return success status of submission. Intent intent = new
+	 * Intent(this, DatabaseActivity.class); startActivity(intent); }
+	 */
 
 }

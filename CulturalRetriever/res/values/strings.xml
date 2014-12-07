@@ -28,5 +28,9 @@
     <string name="title_activity_main_flipper">MainFlipper</string>
     <string name="title_activity_slider_preferences">SliderPreferences</string>
     <string name="title_activity_sqlconnect">SQLconnect</string>
+    <string name="date_view_set">If this landmark is not permanent, 
+           set the expiration date: </string>
+    <string name="date_button_set">Set Date</string>
+    <string name="date_selected"></string>
 
 </resources>
