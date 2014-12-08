@@ -9,7 +9,10 @@ import java.util.Date;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -72,7 +75,9 @@ public class LandmarkIt extends Activity {
 		String desc = landmarkDescription.getText().toString();
 		String expDate = dateView.getText().toString();
 		String linker = mCurrentPhotoPath;
-		new SQLconnect().execute(desc, expDate, linker );
+		LocationManager manage = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		Location loc = manage.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		new SQLconnect().execute(desc, expDate, linker ,Double.toString(loc.getLatitude()), Double.toString(loc.getLongitude()));
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);
 	}

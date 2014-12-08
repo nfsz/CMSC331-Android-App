@@ -92,11 +92,11 @@ public class GoActive extends FragmentActivity {
     }*/
 	
 	public class MoveBeat extends TimerTask{
-		private Location old = LocationListener.GetLocation();
+		private Location old = map.getMyLocation();
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			Location loc = LocationListener.GetLocation();
+			Location loc = map.getMyLocation();
 			
 			if(loc != null && old != null &&
 			(loc.getLatitude() != old.getLatitude() || loc.getLongitude() != old.getLongitude())){

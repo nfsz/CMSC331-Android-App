@@ -7,6 +7,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 
 public class SQLconnect extends AsyncTask<String, Void, Void> {
@@ -22,6 +23,8 @@ public class SQLconnect extends AsyncTask<String, Void, Void> {
 			String tfDescription = (String) params[0];
 			String tfExpirationDate = (String) params[1];
 			String linker = (String) params[2];
+			String lat = (String) params[3];
+			String longit = (String) params[4];
 			// Double latitude = loc.getLatitude();
 			// Double longitude = loc.getLongitude();
 			// String link =
