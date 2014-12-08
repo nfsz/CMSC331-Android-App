@@ -28,7 +28,7 @@ public class GoActive extends FragmentActivity {
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
 	    Timer beat = new Timer();
 	    TimerTask task = new MoveBeat();
-	    beat.scheduleAtFixedRate(task, 5000, 1000);
+	    beat.scheduleAtFixedRate(task, 5000, 10000);
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	}
 

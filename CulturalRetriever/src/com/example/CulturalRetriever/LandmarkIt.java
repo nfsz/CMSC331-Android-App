@@ -75,9 +75,14 @@ public class LandmarkIt extends Activity {
 		String desc = landmarkDescription.getText().toString();
 		String expDate = dateView.getText().toString();
 		String linker = mCurrentPhotoPath;
-		LocationManager manage = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-		Location loc = manage.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		new SQLconnect().execute(desc, expDate, linker ,Double.toString(loc.getLatitude()), Double.toString(loc.getLongitude()));
+		
+		try{
+			LocationManager manage = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+			Location loc = manage.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+			String longit =  Double.toString(loc.getLongitude());
+			String lat = Double.toString(loc.getLatitude());
+			new SQLconnect().execute(desc, expDate, linker ,lat,longit);
+		}catch(Exception e){}
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);
 	}
