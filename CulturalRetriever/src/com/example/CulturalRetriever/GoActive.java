@@ -98,10 +98,12 @@ public class GoActive extends FragmentActivity {
 			// TODO Auto-generated method stub
 			Location loc = LocationListener.GetLocation();
 			
-			if(loc != null && (loc.getLatitude() != old.getLatitude() || loc.getLongitude() != old.getLongitude())){
+			if(loc != null && old != null &&
+			(loc.getLatitude() != old.getLatitude() || loc.getLongitude() != old.getLongitude())){
 				map.addPolyline(new PolylineOptions().add(new LatLng(loc.getLatitude(),loc.getLongitude())
 					,new LatLng(old.getLatitude(), old.getLongitude())));
-			
+			}
+			if(loc != null){
 				old = loc;
 			}
 		}
