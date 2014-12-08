@@ -23,8 +23,8 @@ public class SQLconnect extends AsyncTask<String, Void, Void> {
 			String tfDescription = (String) params[0];
 			String tfExpirationDate = (String) params[1];
 			String linker = (String) params[2];
-			String lat = (String) params[3];
-			String longit = (String) params[4];
+			//String lat = (String) params[3];
+			//String longit = (String) params[4];
 			// Double latitude = loc.getLatitude();
 			// Double longitude = loc.getLongitude();
 			// String link =

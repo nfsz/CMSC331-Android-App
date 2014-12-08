@@ -2,11 +2,14 @@ package com.example.CulturalRetriever;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.concurrent.ExecutionException;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 
 
@@ -24,23 +27,38 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class DatabaseActivity extends Activity {
+	private static final String TAG = "HTTP RESPONSE:";
 	private int rl;
 	private int cl;
+	private String[][] results = new String[rl][cl];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		// setContentView(R.layout.activity_database);
 		// //
-		//String[] results = SQLRequest();
+		
 		String[] row = { "entry1", "entry2", "entry3", "entry4", "entry5",
 				"entry6", "entry7" };
 		String[] column = { "Description", "Date Created", "Expiration Date",
 				"Photo URL" };
 		rl = row.length;
+		//Integer tableRows = rl;
 		cl = column.length;
-
+		//Integer tableColumns = cl;
+		//String.valueOf(cl);
+		SQLRequest myRequest = new SQLRequest();
+		try {
+			results = myRequest.execute(rl, cl).get();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Log.d("--", "R-Lenght--" + rl + "   " + "C-Lenght--" + cl);
+		//Log.d("resultsInDatabaseActivity", results);
 		// enabled scroll for large data
 		ScrollView sv = new ScrollView(this);
 		TableLayout tableLayout = createTableLayout(row, column, rl, cl);
@@ -54,38 +72,43 @@ public class DatabaseActivity extends Activity {
 		// SQLRequest();
 	}
 
-	protected String[] SQLRequest() {
-		try {
-
-			HttpClient client = new DefaultHttpClient();
-			HttpGet request = new HttpGet(
-					"http://userpages.umbc.edu/~mcpat1/331/androidSQLRequestPage.php");
-			client.execute(request);
-			HttpResponse response = client.execute(request);
-
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					response.getEntity().getContent()));
-			//
-			//StringBuffer sb = new StringBuffer("");
-			String[][] results = new String[rl][cl];
-			String line = "";
-			int row = 0;
-			int column = 0;
-			while ((line = in.readLine()) != null) {
-				results[row][column] = line;
-				column++;
-				if (column == cl){
-					column = 0;
-					row++;
-				}
-			}
-			// //////////////////////////////
-		} catch (Exception e) {
-
-		}
-		return null;
-
-	}
+//	protected String[][] SQLRequest() {
+//		try {
+//			
+//			HttpClient client = new DefaultHttpClient();
+//			HttpGet request = new HttpGet(
+//					"http://userpages.umbc.edu/~mcpat1/331/androidSQLRequestPage.php");
+//			//client.execute(request);
+//			HttpResponse response = client.execute(request);
+//			Log.d(TAG, ""+response);
+//			//HttpEntity entity = response.getEntity();
+//			//String htmlResponse = EntityUtils.toString(entity);
+//			
+//			BufferedReader in = new BufferedReader(new InputStreamReader(
+//					response.getEntity().getContent()));
+//			
+//			//
+//			//StringBuffer sb = new StringBuffer("");
+//			String[][] results = new String[rl][cl];
+//			String line = "";
+//			int row = 0;
+//			int column = 0;
+//			while ((line = in.readLine()) != null) {
+//				results[row][column] = line;
+//				column++;
+//				if (column == cl){
+//					column = 0;
+//					row++;
+//				}
+//			}
+//			return results;
+//			// //////////////////////////////
+//		} catch (Exception e) {
+//			Log.d(TAG, "This is the exception within DatabaseActivity "+e);
+//		}
+//		return null;
+//
+//	}
 
 	public void makeCellEmpty(TableLayout tableLayout, int rowIndex,
 			int columnIndex) {

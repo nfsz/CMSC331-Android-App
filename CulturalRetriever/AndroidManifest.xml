@@ -11,7 +11,7 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
- 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- SQL stuff -->
@@ -24,28 +24,28 @@
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
-    
+        android:required="true" />
+
     <!-- need to change @drawable/ic_launcher (icon) -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar" >
-		
         <uses-library android:name="com.google.android.maps" />
-		<meta-data android:name="com.google.android.maps.v2.API_KEY"
-    		android:value="AIzaSyCsoJxmdi0sX62Rl0swVYg4EVzm-322prc"/>
-		
-		<meta-data android:name="com.google.android.gms.version"
-		    android:value="@integer/google_play_services_version" />
-        
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyCsoJxmdi0sX62Rl0swVYg4EVzm-322prc" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <!-- @style/AppTheme -->
         <activity
-            android:name="com.example.CulturalRetriever.Splash"
-            android:label="@string/app_name" 
+            android:name=".Splash"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
-            
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -53,9 +53,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.MainActivity"
-            android:label="@string/app_name" 
-            android:screenOrientation="portrait">
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="com.example.CulturalRetriever.MAINACTIVITY" />
 
@@ -65,9 +65,9 @@
         <!-- A child of the main activity -->
         <!-- Does this child class go here or outside and below as the auto-generator placed it -->
         <activity
-            android:name="com.example.CulturalRetriever.GoActive"
+            android:name=".GoActive"
             android:label="@string/title_GoActive"
-            android:parentActivityName="com.example.CulturalRetriever.MainActivity" 
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -76,41 +76,45 @@
                 android:value="com.example.CulturalRetriever.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.LandmarkIt"
+            android:name=".LandmarkIt"
             android:label="@string/title_activity_landmark_it"
-            android:parentActivityName="com.example.CulturalRetriever.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.CulturalRetriever.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.DatabaseActivity"
+            android:name=".DatabaseActivity"
             android:label="@string/title_activity_database"
-            android:parentActivityName="com.example.CulturalRetriever.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActiviy" />
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.MainFragment"
-            android:label="@string/title_activity_main_fragment" 
+            android:name=".MainFragment"
+            android:label="@string/title_activity_main_fragment"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.MainFlipper"
-            android:label="@string/title_activity_main_flipper" 
+            android:name=".MainFlipper"
+            android:label="@string/title_activity_main_flipper"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.SliderPreferences"
-            android:label="@string/title_activity_slider_preferences" 
+            android:name=".SliderPreferences"
+            android:label="@string/title_activity_slider_preferences"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.CulturalRetriever.SQLconnect"
-            android:label="@string/title_activity_sqlconnect" 
+            android:name=".SQLconnect"
+            android:label="@string/title_activity_sqlconnect"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".SQLRequest"
+            android:label="@string/title_activity_sqlrequest" >
         </activity>
     </application>
 

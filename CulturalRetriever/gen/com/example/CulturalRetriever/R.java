@@ -2198,7 +2198,8 @@ containing a value of this type.
         public static final int activity_slider_preferences=0x7f03001e;
         public static final int activity_splash=0x7f03001f;
         public static final int activity_sqlconnect=0x7f030020;
-        public static final int support_simple_spinner_dropdown_item=0x7f030021;
+        public static final int activity_sqlrequest=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f030022;
     }
     public static final class menu {
         public static final int database=0x7f0d0000;
@@ -2213,6 +2214,7 @@ containing a value of this type.
         public static final int slider_preferences=0x7f0d0009;
         public static final int splash=0x7f0d000a;
         public static final int sqlconnect=0x7f0d000b;
+        public static final int sqlrequest=0x7f0d000c;
     }
     public static final class raw {
         public static final int beastie_boys_ch_check_it_out=0x7f050000;
@@ -2409,6 +2411,7 @@ containing a value of this type.
         public static final int title_activity_slider_preferences=0x7f07004c;
         public static final int title_activity_splash=0x7f07004a;
         public static final int title_activity_sqlconnect=0x7f07004d;
+        public static final int title_activity_sqlrequest=0x7f070051;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

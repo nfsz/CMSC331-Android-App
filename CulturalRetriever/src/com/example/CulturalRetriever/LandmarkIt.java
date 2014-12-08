@@ -79,9 +79,9 @@ public class LandmarkIt extends Activity {
 		try{
 			LocationManager manage = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 			Location loc = manage.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-			String longit =  Double.toString(loc.getLongitude());
-			String lat = Double.toString(loc.getLatitude());
-			new SQLconnect().execute(desc, expDate, linker ,lat,longit);
+			//String longit =  Double.toString(loc.getLongitude());
+			//String lat = Double.toString(loc.getLatitude());
+			new SQLconnect().execute(desc, expDate, linker);
 		}catch(Exception e){}
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);
@@ -226,12 +226,12 @@ public class LandmarkIt extends Activity {
 		mediaScanIntent.setData(contentUri);
 		this.sendBroadcast(mediaScanIntent);
 	}
-	@Override
+	/*@Override
 	protected void onPause(){
 		super.onPause();
 		//end landmark it
 		finish();
-	}
+	}*/
 
 	/*
 	 * private void submitToDB(View view) { // this is a background event... //

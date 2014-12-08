@@ -31,9 +31,6 @@ public class MainActivity extends ActionBarActivity
 	private ViewFlipper mainFlipper;
 	private GestureDetectorCompat mDetector;
 	private GestureDetectorCompat usedDetector;
-    static final String EXTRA_MESSAGE = "oom.example.helloworld.MESSAGE";
-    static final String USERNAME = "oom.example.helloworld.CURRENT_USERNAME";
-    static final String LANDMARK_MESSAGE = "oom.example.helloworld.LANDMARK_MESSAGE";
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,18 +143,11 @@ public class MainActivity extends ActionBarActivity
     /** Called when the user clicks the Send button */
     public void goActive(View view) {
         Intent intent = new Intent(this, GoActive.class);
-        //EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = "Let's develop this app \"Boys\", \n\nMatt, this is where we need to have GPS going" +
-        		"Nasif, Can you get the music set up in this Activity Class as well?";//editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
         
     public void goLandmarkIt(View view) {
         Intent intent = new Intent(this, LandmarkIt.class);
-        //EditText editText = (EditText) findViewById(R.id.edit_message);
-        String message = "Need to add mCamera functionality";//editText.getText().toString();
-        intent.putExtra(LANDMARK_MESSAGE, message);
         startActivity(intent);
     }
     public void onImageSelected(int ImgID) {

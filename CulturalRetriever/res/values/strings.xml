@@ -32,5 +32,6 @@
            set the expiration date: </string>
     <string name="date_button_set">Set Date</string>
     <string name="date_selected"></string>
+    <string name="title_activity_sqlrequest">SQLRequest</string>
 
 </resources>
