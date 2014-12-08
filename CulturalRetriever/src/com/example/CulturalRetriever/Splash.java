@@ -28,7 +28,7 @@ public class Splash extends Activity{
         		}catch(InterruptedException ex){
         			ex.printStackTrace();
         		}finally{
-        			Intent openSplash = new Intent("com.example.helloworld.MAINACTIVITY");
+        			Intent openSplash = new Intent("com.example.CulturalRetriever.MAINACTIVITY");
         			startActivity(openSplash);
         			
         		}
