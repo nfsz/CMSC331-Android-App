@@ -1,0 +1,7 @@
+*.class
+#mobile tools
+.mtj.tmp/
+
+#VM crash
+hs_err_pid*
+bin/
