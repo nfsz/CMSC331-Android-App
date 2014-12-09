@@ -32,7 +32,7 @@ public class GoActive extends FragmentActivity implements LocationListener{
 	    Location start = getLocation();
 	    map.animateCamera(CameraUpdateFactory.newLatLngZoom
 	    		(new LatLng(start.getLatitude(), start.getLongitude()), 10));
-	    beat.scheduleAtFixedRate(task, 5000, 10000);
+	//    beat.scheduleAtFixedRate(task, 5000, 10000);
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	}
 
