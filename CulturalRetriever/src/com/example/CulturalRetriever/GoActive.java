@@ -32,15 +32,14 @@ public class GoActive extends FragmentActivity implements LocationListener{
 	    Timer beat = new Timer();
 	    TimerTask task = new MoveBeat();
 	    Location start = getLocation();
+	    
 	    map.animateCamera(CameraUpdateFactory.newLatLngZoom
 	    		(new LatLng(start.getLatitude(), start.getLongitude()), 10));
 	    beat.scheduleAtFixedRate(task, 5000, 10000);
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	}
-
-	public class MoveBeat extends TimerTask{
-		private Location old;
-		
+	private Location old;
+	public class MoveBeat extends TimerTask{		
 		
 		@Override
 		public void run() {
@@ -48,8 +47,14 @@ public class GoActive extends FragmentActivity implements LocationListener{
 			Location loc = getLocation();
 			if(loc != null && old != null &&
 			(loc.getLatitude() != old.getLatitude() || loc.getLongitude() != old.getLongitude())){
-				map.addPolyline(new PolylineOptions().add(new LatLng(loc.getLatitude(),loc.getLongitude())
-					,new LatLng(old.getLatitude(), old.getLongitude())));
+				
+				
+				PolylineOptions po = new PolylineOptions();
+				LatLng pointA = new LatLng(loc.getLatitude(),loc.getLongitude());
+				LatLng pointB = new LatLng(old.getLatitude(), old.getLongitude());
+				po.add(pointA, pointB);
+				map.addPolyline(po);
+				
 			} 
 			if(loc != null){
 				old = loc;
