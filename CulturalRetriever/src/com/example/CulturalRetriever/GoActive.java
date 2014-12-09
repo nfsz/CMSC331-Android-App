@@ -26,6 +26,7 @@ public class GoActive extends FragmentActivity {
 		super.onCreate(savedInstanceState);    
 		setContentView(R.layout.activity_go_active);
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
+	    map.setMyLocationEnabled(true);
 	    Timer beat = new Timer();
 	    TimerTask task = new MoveBeat();
 	    beat.scheduleAtFixedRate(task, 5000, 10000);
