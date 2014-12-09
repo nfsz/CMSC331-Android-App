@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity implements
 	private static final String DEBUG_TAG = "TopGestures";
 	private ViewFlipper mainFlipper;
 	private GestureDetectorCompat mDetector;
-	private GestureDetectorCompat usedDetector;
+	//private GestureDetectorCompat usedDetector;
 	//private ImageView mImageView;
 
 	@Override
@@ -44,8 +44,8 @@ public class MainActivity extends ActionBarActivity implements
 		// Set the gesture detector as the double tap
 		// listener.
 		mDetector.setOnDoubleTapListener(this);
-		// usedDetector = new GestureDetectorCompat(this, new
-		// MyGestureListener());
+		//usedDetector = new GestureDetectorCompat(this, new
+		//MyGestureListener());
 		// LocationManager loc = (LocationManager)
 		// getSystemService(Context.LOCATION_SERVICE);
 		// loc.requestLocationUpdates(LocationManager.GPS_PROVIDER,0, 0, new
@@ -164,7 +164,7 @@ public class MainActivity extends ActionBarActivity implements
 		 * uncomment for all gestures logged
 		 */
 		this.mDetector.onTouchEvent(event);
-		this.usedDetector.onTouchEvent(event);
+		//this.usedDetector.onTouchEvent(event);
 		// Be sure to call the superclass implementation
 		return super.onTouchEvent(event);
 	}
