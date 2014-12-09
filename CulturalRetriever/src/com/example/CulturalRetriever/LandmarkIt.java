@@ -73,7 +73,7 @@ public class LandmarkIt extends Activity {
 
 	public void startSQL(View view) {
 		String desc = landmarkDescription.getText().toString();
-		String expDate = dateView.getText().toString();
+		//String expDate = dateView.getText().toString();
 		String linker = mCurrentPhotoPath;
 		
 		try{
@@ -81,7 +81,10 @@ public class LandmarkIt extends Activity {
 			Location loc = manage.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 			//String longit =  Double.toString(loc.getLongitude());
 			//String lat = Double.toString(loc.getLatitude());
-			new SQLconnect().execute(desc, expDate, linker);
+			StringBuilder expDate = new StringBuilder();
+			expDate.append(year).append("-").append(month + 1).append("-").append(day);
+			
+			new SQLconnect().execute(desc, expDate.toString(), linker);
 		}catch(Exception e){}
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);

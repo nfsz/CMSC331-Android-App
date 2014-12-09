@@ -14,101 +14,102 @@ import org.apache.http.util.EntityUtils;
 
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 public class DatabaseActivity extends Activity {
+	private ImageView mImageView;
 	private static final String TAG = "HTTP RESPONSE:";
 	private int rl;
 	private int cl;
 	private String[][] results = new String[rl][cl];
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.activity_database);
-		// //
 		
-		String[] row = { "entry1", "entry2", "entry3", "entry4", "entry5",
+		super.onCreate(savedInstanceState);
+
+		
+		String[] row = {"", "entry1", "entry2", "entry3", "entry4", "entry5",
 				"entry6", "entry7" };
-		String[] column = { "Description", "Date Created", "Expiration Date",
+		String[] column = {"", "Description", "Date Created", "Expiration Date",
 				"Photo URL" };
 		rl = row.length;
-		//Integer tableRows = rl;
+	
 		cl = column.length;
-		//Integer tableColumns = cl;
-		//String.valueOf(cl);
+
 		SQLRequest myRequest = new SQLRequest();
 		try {
 			results = myRequest.execute(rl, cl).get();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 		Log.d("--", "R-Lenght--" + rl + "   " + "C-Lenght--" + cl);
-		//Log.d("resultsInDatabaseActivity", results);
+		;
 		// enabled scroll for large data
 		ScrollView sv = new ScrollView(this);
-		TableLayout tableLayout = createTableLayout(row, column, rl, cl);
+		TableLayout tableLayout = createTableLayout(row, column, rl, cl, results);
 		HorizontalScrollView hsv = new HorizontalScrollView(this);
 
 		hsv.addView(tableLayout);
 		sv.addView(hsv);
 		setContentView(sv);
+		
+		//////////////////
+		if(results[0][0] != null){
+			setPic();
+		}
 
-		// //
-		// SQLRequest();
+	}
+	
+	private void setPic() {
+		// Get the photo path
+		int i = 0;
+		String mCurrentPhotoPath = results[i][3]; 
+		// Get the dimensions of the View
+		ImageView mImageView = (ImageView) findViewById(R.id.imageView1);
+		int targetW = mImageView.getWidth();
+		int targetH = mImageView.getHeight();
+
+		// Get the dimensions of the bitmap
+		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+		bmOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+		int photoW = bmOptions.outWidth;
+		int photoH = bmOptions.outHeight;
+
+		// Determine how much to scale down the image
+		int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
+
+		// Decode the image file into a Bitmap sized to fill the View
+		bmOptions.inJustDecodeBounds = false;
+		bmOptions.inSampleSize = scaleFactor;
+		bmOptions.inPurgeable = true;
+
+		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+		mImageView.setImageBitmap(bitmap);
+		mImageView.setVisibility(View.VISIBLE);
+		View mainFlipper = findViewById(R.id.viewFlipper1);
+		mainFlipper.setVisibility(View.INVISIBLE);
 	}
 
-//	protected String[][] SQLRequest() {
-//		try {
-//			
-//			HttpClient client = new DefaultHttpClient();
-//			HttpGet request = new HttpGet(
-//					"http://userpages.umbc.edu/~mcpat1/331/androidSQLRequestPage.php");
-//			//client.execute(request);
-//			HttpResponse response = client.execute(request);
-//			Log.d(TAG, ""+response);
-//			//HttpEntity entity = response.getEntity();
-//			//String htmlResponse = EntityUtils.toString(entity);
-//			
-//			BufferedReader in = new BufferedReader(new InputStreamReader(
-//					response.getEntity().getContent()));
-//			
-//			//
-//			//StringBuffer sb = new StringBuffer("");
-//			String[][] results = new String[rl][cl];
-//			String line = "";
-//			int row = 0;
-//			int column = 0;
-//			while ((line = in.readLine()) != null) {
-//				results[row][column] = line;
-//				column++;
-//				if (column == cl){
-//					column = 0;
-//					row++;
-//				}
-//			}
-//			return results;
-//			// //////////////////////////////
-//		} catch (Exception e) {
-//			Log.d(TAG, "This is the exception within DatabaseActivity "+e);
-//		}
-//		return null;
-//
-//	}
+
 
 	public void makeCellEmpty(TableLayout tableLayout, int rowIndex,
 			int columnIndex) {
@@ -135,7 +136,7 @@ public class DatabaseActivity extends Activity {
 	}
 
 	private TableLayout createTableLayout(String[] rv, String[] cv,
-			int rowCount, int columnCount) {
+			int rowCount, int columnCount, String[][] data) {
 		// 1) Create a tableLayout and its params
 		TableLayout.LayoutParams tableLayoutParams = new TableLayout.LayoutParams();
 		TableLayout tableLayout = new TableLayout(this);
@@ -167,17 +168,12 @@ public class DatabaseActivity extends Activity {
 					textView.setText("0==0");
 				} else if (i == 0) {
 					Log.d("TAAG", "set Column Headers");
-					textView.setText(cv[j - 1]);
+					textView.setText(cv[j]);
 				} else if (j == 0) {
 					Log.d("TAAG", "Set Row Headers");
-					textView.setText(rv[i - 1]);
+					textView.setText(rv[i]);
 				} else {
-					textView.setText("" + id);
-					// check id=23
-					if (id == 23) {
-						textView.setText("ID=23");
-
-					}
+					textView.setText(""+data[i-1][j-1]);
 				}
 
 				// 5) add textView to tableRow
