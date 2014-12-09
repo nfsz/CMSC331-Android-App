@@ -41,6 +41,7 @@ public class GoActive extends FragmentActivity implements LocationListener{
 	public class MoveBeat extends TimerTask{
 		private Location old;
 		
+		
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
