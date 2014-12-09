@@ -37,15 +37,15 @@ public class SQLRequest extends AsyncTask<Integer, Void, String[][]> {
 		
 		int rl = params[0];
 		int cl = params[1];
-		StringBuffer sb = new StringBuffer("");
+		//StringBuffer sb = new StringBuffer("");
 		String[][] results = new String[rl][cl];
 		String line = "";
 		int row = 0;
 		int column = 0;
-		while ((line = in.readLine()) != null) {
+		while ((line = in.readLine()) != null && row < rl) {
 			results[row][column] = line;
 			column++;
-			if (column == cl){
+			if (column == cl - 1){
 				column = 0;
 				row++;
 			}
