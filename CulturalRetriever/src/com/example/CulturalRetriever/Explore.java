@@ -15,11 +15,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Explore extends FragmentActivity implements LocationListener {
 	private GoogleMap map;
 	private LocationManager locationManager;
-	private String[][] results = new String[7][6];
+	private String[][] results;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,19 +29,24 @@ public class Explore extends FragmentActivity implements LocationListener {
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
 	    map.setMyLocationEnabled(true);
 
-	    Location start = getLocation();
-	    
-	    try{
-	    	map.animateCamera(CameraUpdateFactory.newLatLngZoom
-	    		(new LatLng(start.getLatitude(), start.getLongitude()), 10));	
+    	map.animateCamera(CameraUpdateFactory.newLatLngZoom
+	    		(new LatLng(39.255901,-76.711338), 10));
+	    try{	
 	    	SQLRequest myRequest = new SQLRequest();
 			try {
-				results = myRequest.execute(7,6).get();
+				results = myRequest.execute(7,7).get();
+				for(int count = 0; count < results.length; count++){
+					double lat = Double.parseDouble(results[count][5]);
+					double lon = Double.parseDouble(results[count][4]);
+					String des = results[count][0];
+					MarkerOptions lan = new MarkerOptions();
+					lan.position(new LatLng(lat, lon));
+					lan.snippet(des);
+					map.addMarker(lan);
+				}
 			} catch (InterruptedException e) {
-				
 				e.printStackTrace();
 			} catch (ExecutionException e) {
-			
 				e.printStackTrace();
 			}
 		
