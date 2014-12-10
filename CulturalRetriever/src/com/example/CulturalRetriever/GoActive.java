@@ -1,21 +1,13 @@
 package com.example.CulturalRetriever;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import javax.net.ssl.ManagerFactoryParameters;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.SyncStateContract.Constants;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.appcompat.R.color;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -36,8 +28,12 @@ public class GoActive extends FragmentActivity implements LocationListener{
 	    Location start = getLocation();
 	    old = start;
 	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-	    map.animateCamera(CameraUpdateFactory.newLatLngZoom
-	    		(new LatLng(start.getLatitude(), start.getLongitude()), 10));
+	    
+	    try{
+	    	map.animateCamera(CameraUpdateFactory.newLatLngZoom
+	    		(new LatLng(start.getLatitude(), start.getLongitude()), 10));	
+	    	
+	    }catch(Exception e){}
 	    //beat.scheduleAtFixedRate(task, 5000, 10000);
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	}
@@ -59,17 +55,16 @@ public class GoActive extends FragmentActivity implements LocationListener{
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
-		PolylineOptions po = new PolylineOptions();
-		LatLng pointA = new LatLng(location.getLatitude(),location.getLongitude());
-		LatLng pointB = new LatLng(old.getLatitude(), old.getLongitude());
-		po.add(pointA, pointB);
-		po.width(2);
-		po.color(Color.RED);
-		map.addPolyline(po);
-			
-		if(location != null){
-			old = location;
-		}
+		if(old != null){
+			PolylineOptions po = new PolylineOptions();
+			LatLng pointA = new LatLng(location.getLatitude(),location.getLongitude());
+			LatLng pointB = new LatLng(old.getLatitude(), old.getLongitude());
+			po.add(pointA, pointB);
+			po.width(2);
+			po.color(Color.RED);
+			map.addPolyline(po);
+		}	
+		old = location;
 	}
 
 	@Override
