@@ -71,44 +71,11 @@ public class DatabaseActivity extends Activity {
 		sv.addView(hsv);
 		setContentView(sv);
 		
-		//////////////////
-		if(results[0][0] != null){
-			setPic();
-		}
+
 
 	}
 	
-	private void setPic() {
-		// Get the photo path
-		int i = 0;
-		String mCurrentPhotoPath = results[i][3]; 
-		// Get the dimensions of the View
-		ImageView mImageView = (ImageView) findViewById(R.id.imageView1);
-		int targetW = mImageView.getWidth();
-		int targetH = mImageView.getHeight();
-
-		// Get the dimensions of the bitmap
-		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-		bmOptions.inJustDecodeBounds = true;
-		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-		int photoW = bmOptions.outWidth;
-		int photoH = bmOptions.outHeight;
-
-		// Determine how much to scale down the image
-		int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
-
-		// Decode the image file into a Bitmap sized to fill the View
-		bmOptions.inJustDecodeBounds = false;
-		bmOptions.inSampleSize = scaleFactor;
-		bmOptions.inPurgeable = true;
-
-		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-		mImageView.setImageBitmap(bitmap);
-		mImageView.setVisibility(View.VISIBLE);
-		View mainFlipper = findViewById(R.id.viewFlipper1);
-		mainFlipper.setVisibility(View.INVISIBLE);
-	}
-
+	
 
 
 	public void makeCellEmpty(TableLayout tableLayout, int rowIndex,
