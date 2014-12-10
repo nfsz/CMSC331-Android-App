@@ -3,6 +3,8 @@ package com.example.CulturalRetriever;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.net.ssl.ManagerFactoryParameters;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.location.Location;
@@ -23,44 +25,23 @@ import com.google.android.gms.maps.model.PolylineOptions;
 public class GoActive extends FragmentActivity implements LocationListener{
 	private GoogleMap map; 
 	private LocationManager locationManager;
+	private Location old;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);    
 		setContentView(R.layout.activity_go_active);
 	    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap(); 
 	    map.setMyLocationEnabled(true);
-	    Timer beat = new Timer();
-	    TimerTask task = new MoveBeat();
+
 	    Location start = getLocation();
-	    
+	    old = start;
+	    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 	    map.animateCamera(CameraUpdateFactory.newLatLngZoom
 	    		(new LatLng(start.getLatitude(), start.getLongitude()), 10));
-	    beat.scheduleAtFixedRate(task, 5000, 10000);
+	    //beat.scheduleAtFixedRate(task, 5000, 10000);
 		//map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 	}
-	private Location old;
-	public class MoveBeat extends TimerTask{		
-		
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			Location loc = getLocation();
-			if(loc != null && old != null &&
-			(loc.getLatitude() != old.getLatitude() || loc.getLongitude() != old.getLongitude())){
-				
-				
-				PolylineOptions po = new PolylineOptions();
-				LatLng pointA = new LatLng(loc.getLatitude(),loc.getLongitude());
-				LatLng pointB = new LatLng(old.getLatitude(), old.getLongitude());
-				po.add(pointA, pointB);
-				map.addPolyline(po);
-				
-			} 
-			if(loc != null){
-				old = loc;
-			}
-		}
-	}
+	
 
 	public Location getLocation() { 
 		String provider = null;
@@ -78,7 +59,17 @@ public class GoActive extends FragmentActivity implements LocationListener{
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
-		
+		PolylineOptions po = new PolylineOptions();
+		LatLng pointA = new LatLng(location.getLatitude(),location.getLongitude());
+		LatLng pointB = new LatLng(old.getLatitude(), old.getLongitude());
+		po.add(pointA, pointB);
+		po.width(2);
+		po.color(Color.RED);
+		map.addPolyline(po);
+			
+		if(location != null){
+			old = location;
+		}
 	}
 
 	@Override
