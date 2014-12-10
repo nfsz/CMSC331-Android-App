@@ -42,7 +42,7 @@ public class Explore extends FragmentActivity implements LocationListener {
 					MarkerOptions lan = new MarkerOptions();
 					lan.position(new LatLng(lat, lon));
 					lan.title(des);
-					map.addMarker(lan);
+					map.addMarker(lan).showInfoWindow();
 				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();

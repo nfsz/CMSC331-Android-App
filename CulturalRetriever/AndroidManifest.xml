@@ -116,6 +116,10 @@
             android:name=".SQLRequest"
             android:label="@string/title_activity_sqlrequest" >
         </activity>
+        <activity
+            android:name=".Explore"
+            android:label="@string/title_activity_explore" >
+        </activity>
     </application>
 
 </manifest>
