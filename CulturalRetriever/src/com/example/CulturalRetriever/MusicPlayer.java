@@ -93,7 +93,7 @@ public class MusicPlayer extends Fragment implements SensorEventListener{
 				play.setVisibility(View.VISIBLE);
 			}
 		});	
-		
+
 		play.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				sendMediaButton(getActivity().getApplicationContext(), KeyEvent.KEYCODE_MEDIA_PLAY);
@@ -101,13 +101,13 @@ public class MusicPlayer extends Fragment implements SensorEventListener{
 				pause.setVisibility(View.VISIBLE);
 			}
 		});
-		
+
 		next.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				sendMediaButton(getActivity().getApplicationContext(), KeyEvent.KEYCODE_MEDIA_NEXT);
 			}
 		});
-		
+
 		return rootView;
 	}
 
@@ -163,7 +163,7 @@ public class MusicPlayer extends Fragment implements SensorEventListener{
 			mLastY = y;
 			mLastZ = z;
 
-			if (deltaX > 4 || deltaY > 4 || deltaZ > 4) {
+			if (deltaX > 2 || deltaY > 2 || deltaZ > 2) {
 				if (amg.getStreamVolume(AudioManager.STREAM_MUSIC) >= max) {
 					amg.adjustStreamVolume(AudioManager.STREAM_MUSIC,
 							AudioManager.ADJUST_SAME, AudioManager.FLAG_VIBRATE);
@@ -172,25 +172,33 @@ public class MusicPlayer extends Fragment implements SensorEventListener{
 							AudioManager.ADJUST_RAISE,
 							AudioManager.FLAG_VIBRATE);
 				}
-			} else if (deltaX < 2.0) {
+			} else if (deltaX < 0.1) {
 				amg.adjustStreamVolume(AudioManager.STREAM_MUSIC,
 						AudioManager.ADJUST_LOWER, AudioManager.FLAG_VIBRATE);
 			}
+
+//			if(amg.getStreamVolume(AudioManager.STREAM_MUSIC) == 0 && amg.isMusicActive()){
+//				sendMediaButton(getActivity().getApplicationContext(), KeyEvent.KEYCODE_MEDIA_PAUSE);
+//			}
+//			if(amg.getStreamVolume(AudioManager.STREAM_MUSIC) > 0 && !amg.isMusicActive()){
+//				sendMediaButton(getActivity().getApplicationContext(), KeyEvent.KEYCODE_MEDIA_PLAY);
+//			}
+
 		}		
 	}
 
 	private static void sendMediaButton(Context context, int keyCode) {
-	    KeyEvent keyEvent = new KeyEvent(KeyEvent.ACTION_DOWN, keyCode);
-	    Intent intent = new Intent(Intent.ACTION_MEDIA_BUTTON);
-	    intent.putExtra(Intent.EXTRA_KEY_EVENT, keyEvent);
-	    context.sendOrderedBroadcast(intent, null);
+		KeyEvent keyEvent = new KeyEvent(KeyEvent.ACTION_DOWN, keyCode);
+		Intent intent = new Intent(Intent.ACTION_MEDIA_BUTTON);
+		intent.putExtra(Intent.EXTRA_KEY_EVENT, keyEvent);
+		context.sendOrderedBroadcast(intent, null);
 
-	    keyEvent = new KeyEvent(KeyEvent.ACTION_UP, keyCode);
-	    intent = new Intent(Intent.ACTION_MEDIA_BUTTON);
-	    intent.putExtra(Intent.EXTRA_KEY_EVENT, keyEvent);
-	    context.sendOrderedBroadcast(intent, null);
+		keyEvent = new KeyEvent(KeyEvent.ACTION_UP, keyCode);
+		intent = new Intent(Intent.ACTION_MEDIA_BUTTON);
+		intent.putExtra(Intent.EXTRA_KEY_EVENT, keyEvent);
+		context.sendOrderedBroadcast(intent, null);
 	}
-	
+
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub
