@@ -3,8 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" >
+    android:paddingRight="16dp" 
+    android:background="@drawable/project2_background" >
 
+    <Button
+        android:id="@+id/button_view_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="viewMap"
+        android:text="@string/button_view_map" />
+    
     <Button
         android:id="@+id/button_go_active"
         android:layout_width="wrap_content"
@@ -16,66 +26,29 @@
 
     <ViewFlipper
         android:id="@+id/maincontainer"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_width="128dp"
-        android:layout_height="128dp" >
+        android:layout_height="128dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"  >
 
         <ImageButton
             android:id="@+id/imageButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:contentDescription="@string/button_go_active"
+            android:onClick="goActive"
             android:src="@drawable/ic_action_go_active"
-            android:onClick="goActive" />
+             />
 
         <ImageButton
             android:id="@+id/imageButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:contentDescription="@string/button_landmark_it"
-            android:src="@drawable/ic_action_landmark_it"
-            android:onClick="goLandmarkIt" />
+            android:onClick="goLandmarkIt"
+            android:src="@drawable/ic_action_landmark_it" />
     </ViewFlipper>
-      <ImageView 
-      android:layout_height="wrap_content" 
-      android:layout_width="wrap_content" 
-      android:visibility="visible"
-      android:id="@+id/imageView1" />
 
-    <!--
-      <fragment
-        android:id="@+id/main_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-       	 class="com.example.helloworld.MainFragment" />
-       	 
-            -->
-    <!--
-     <EditText android:id="@+id/edit_password_message"
-        android:inputType="textPassword"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_password_message"
-        android:layout_below="@id/button_go_active" 
-        android:layout_centerVertical="true"/>
-          
-     <EditText android:id="@+id/edit_username_message"
-        android:layout_height="wrap_content"
-        android:hint="@string/edit_username_message"
-        android:layout_toLeftOf="@id/edit_password_message" />
-  
-	<Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_signup" 
-        android:layout_below="@id/edit_username_message"/>
-	
-	<Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_go" 
-        android:layout_below="@id/edit_password_message"/>
-    -->
 
     <Button
         android:layout_width="wrap_content"

@@ -1,5 +1,7 @@
 package com.example.CulturalRetriever;
 
+import java.util.concurrent.ExecutionException;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,16 +17,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 public class MainActivity extends ActionBarActivity implements
 		MainFragment.OnCentralSelectedListener,
 		GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
-
+	private ImageButton mImageView;
 	private static final String DEBUG_TAG = "TopGestures";
 	private ViewFlipper mainFlipper;
 	private GestureDetectorCompat mDetector;
+//	private int rl = 8;
+//	private int cl = 7;
+//	private String[][] results = new String[rl][cl];
 	//private GestureDetectorCompat usedDetector;
 	//private ImageView mImageView;
 
@@ -53,6 +59,23 @@ public class MainActivity extends ActionBarActivity implements
 
 	}
 
+//	protected void addDBPics(){
+//		SQLRequest myRequest = new SQLRequest();
+//		try {
+//			results = myRequest.execute(rl, cl).get();
+//		} catch (InterruptedException e) {
+//			
+//			e.printStackTrace();
+//		} catch (ExecutionException e) {
+//		
+//			e.printStackTrace();
+//		}
+//		// Get the photo path
+//		int i = 0;
+//		String mCurrentPhotoPath = results[i][3]; 
+//		setPic(mCurrentPhotoPath);
+//	}
+
 	/*
 	 * 
 	 * // add android.app.FragmentTransaction ft = fm.beginTransaction();
@@ -67,7 +90,34 @@ public class MainActivity extends ActionBarActivity implements
 	 * FragmentTransaction ft = fm.beginTransaction(); ft.remove(fragment);
 	 * ft.commit();
 	 */
-
+//	private void setPic(String mCurrentPhotoPath) {
+//		
+//	mImageView = (ImageButton) findViewById(R.id.imageButton1);
+//
+//	// Get the dimensions of the View
+//
+//	//int targetW = mImageView.getWidth();
+//	//int targetH = mImageView.getHeight();
+//
+//	// Get the dimensions of the bitmap
+//	BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+//	bmOptions.inJustDecodeBounds = true;
+//	BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+//	int photoW = bmOptions.outWidth;
+//	int photoH = bmOptions.outHeight;
+//
+//	// Determine how much to scale down the image
+//	int scaleFactor = Math.min(photoW / 128, photoH / 128);
+//
+//	// Decode the image file into a Bitmap sized to fill the View
+//	bmOptions.inJustDecodeBounds = false;
+//	bmOptions.inSampleSize = scaleFactor;
+//	bmOptions.inPurgeable = true;
+//
+//	Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+//	mImageView.setImageBitmap(bitmap);
+//;
+//}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar
@@ -90,7 +140,9 @@ public class MainActivity extends ActionBarActivity implements
 		case R.id.action_settings:
 			// openSettings(); //need to complete
 			return true;
-
+//		case R.id.action_view_map:
+//			viewMap(null);
+//			return true;
 		case R.id.action_go_active:
 			goActive(null);
 			return true;
@@ -102,39 +154,17 @@ public class MainActivity extends ActionBarActivity implements
 		}
 	}
 
-//	private void setPic(String mCurrentPhotoPath) {
-//		// Get the dimensions of the View
-//		ImageView mImageView = (ImageView) findViewById(R.id.imageView1);
-//		int targetW = mImageView.getWidth();
-//		int targetH = mImageView.getHeight();
-//
-//		// Get the dimensions of the bitmap
-//		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
-//		bmOptions.inJustDecodeBounds = true;
-//		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-//		int photoW = bmOptions.outWidth;
-//		int photoH = bmOptions.outHeight;
-//
-//		// Determine how much to scale down the image
-//		int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
-//
-//		// Decode the image file into a Bitmap sized to fill the View
-//		bmOptions.inJustDecodeBounds = false;
-//		bmOptions.inSampleSize = scaleFactor;
-//		bmOptions.inPurgeable = true;
-//
-//		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
-//		mImageView.setImageBitmap(bitmap);
-//		mImageView.setVisibility(View.VISIBLE);
-//		mainFlipper.setVisibility(View.INVISIBLE);
-//	}
+
 
 	/** Called when the user clicks the Send button */
 	public void goActive(View view) {
 		Intent intent = new Intent(this, GoActive.class);
 		startActivity(intent);
 	}
-
+	public void viewMap(View view) {
+		Intent intent = new Intent(this, Explore.class);
+		startActivity(intent);
+	}
 	public void goLandmarkIt(View view) {
 		Intent intent = new Intent(this, LandmarkIt.class);
 		startActivity(intent);
@@ -206,6 +236,7 @@ public class MainActivity extends ActionBarActivity implements
 	@Override
 	public void onLongPress(MotionEvent event) {
 		Log.d(DEBUG_TAG, "onLongPress: " + event.toString());
+		
 	}
 
 	@Override
