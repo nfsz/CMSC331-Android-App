@@ -53,12 +53,6 @@ public class Explore extends FragmentActivity implements LocationListener {
 	    }catch(Exception e){}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.explore, menu);
-		return true;
-	}
 	public Location getLocation() { 
 		String provider = null;
 		  locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
