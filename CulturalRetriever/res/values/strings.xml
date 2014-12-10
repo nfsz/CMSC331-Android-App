@@ -34,5 +34,6 @@
     <string name="date_selected"></string>
     <string name="title_activity_sqlrequest">SQLRequest</string>
     <string name="title_activity_main_photo_uploader">MainPhotoUploader</string>
+    <string name="button_view_map">View Map</string>
 
 </resources>
