@@ -14,6 +14,7 @@ import org.apache.http.util.EntityUtils;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -45,7 +46,7 @@ public class DatabaseActivity extends Activity {
 		String[] row = {"", "entry1", "entry2", "entry3", "entry4", "entry5",
 				"entry6", "entry7" };
 		String[] column = {"", "Description", "Date Created", "Expiration Date",
-				"Photo URL" };
+				"Photo URL" , "Longitude", "Latitude"};
 		rl = row.length;
 	
 		cl = column.length;
@@ -153,4 +154,15 @@ public class DatabaseActivity extends Activity {
 
 		return tableLayout;
 	}
+
+
+
+
+	@Override
+	public void onBackPressed() {
+		Intent intent = new Intent(this, MainActivity.class);
+		startActivity(intent);
+		super.onBackPressed();
+	}
+
 }

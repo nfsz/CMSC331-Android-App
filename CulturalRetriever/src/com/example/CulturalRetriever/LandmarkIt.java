@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -27,7 +28,7 @@ import android.widget.Toast;
 
 //import android.widget.TextView;
 
-public class LandmarkIt extends Activity {
+public class LandmarkIt extends Activity implements LocationListener {
 	private EditText landmarkDescription;
 	private DatePicker datePicker;
 	private Calendar calendar;
@@ -79,17 +80,29 @@ public class LandmarkIt extends Activity {
 		try{
 			LocationManager manage = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 			Location loc = manage.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-			//String longit =  Double.toString(loc.getLongitude());
-			//String lat = Double.toString(loc.getLatitude());
+			String longitude =  Double.toString(loc.getLongitude());
+			String latitude = Double.toString(loc.getLatitude());
 			StringBuilder expDate = new StringBuilder();
 			expDate.append(year).append("-").append(month + 1).append("-").append(day);
 			
-			new SQLconnect().execute(desc, expDate.toString(), linker);
+			new SQLconnect().execute(desc, expDate.toString(), linker, latitude, longitude);
 		}catch(Exception e){}
 		Intent intent = new Intent(this, DatabaseActivity.class);
 		startActivity(intent);
 	}
-
+	public Location getLocation() { 
+		String provider = null;
+		  LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+		  if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+			  provider = LocationManager.GPS_PROVIDER;
+		  } else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+			  provider = LocationManager.NETWORK_PROVIDER;
+		  } else { 
+			  // FAIL 
+		  } 
+		  locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, this, null);
+		  return locationManager.getLastKnownLocation(provider);
+	  }
 	// @Override
 	// public void onClick(View v) {
 
@@ -235,6 +248,30 @@ public class LandmarkIt extends Activity {
 		//end landmark it
 		finish();
 	}*/
+
+	@Override
+	public void onLocationChanged(Location arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	/*
 	 * private void submitToDB(View view) { // this is a background event... //
