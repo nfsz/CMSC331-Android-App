@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="installedFeatures">
-		<item value="com.android.ide.eclipse.adt.feature:23.0.4.1468518"/>
 		<item value="com.android.ide.eclipse.adt.package.feature:23.0.2.1259578"/>
-		<item value="com.android.ide.eclipse.ddms.feature:23.0.4.1468518"/>
-		<item value="com.android.ide.eclipse.hierarchyviewer.feature:23.0.4.1468518"/>
-		<item value="com.android.ide.eclipse.traceview.feature:23.0.4.1468518"/>
-		<item value="org.eclipse.cdt.gdb:7.0.0.201302132326"/>
-		<item value="org.eclipse.cdt:8.1.2.201302132326"/>
+		<item value="org.eclipse.cdt.gdb:7.0.0.201202111925"/>
+		<item value="org.eclipse.cdt:8.0.2.201202111925"/>
 		<item value="org.eclipse.egit.import:2.2.0.201212191850-r"/>
 		<item value="org.eclipse.egit:2.2.0.201212191850-r"/>
 		<item value="org.eclipse.emf.common:2.9.1.v20130827-0309"/>
@@ -19,9 +15,9 @@
 	</list>
 	<section name="CleanDialogSettings">
 		<item value="500" key="DIALOG_WIDTH"/>
-		<item value="113" key="DIALOG_Y_ORIGIN"/>
-		<item value="377" key="DIALOG_HEIGHT"/>
-		<item value="433" key="DIALOG_X_ORIGIN"/>
 		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="378" key="DIALOG_HEIGHT"/>
+		<item value="433" key="DIALOG_X_ORIGIN"/>
+		<item value="132" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

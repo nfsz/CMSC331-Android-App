@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="CulturalRetrieverTheme" parent="@style/_CulturalRetrieverTheme"/>
+
+  <style name="_CulturalRetrieverTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+    <item name="android:buttonStyle">@style/ButtonCulturalRetrieverTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonCulturalRetrieverTheme</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerCulturalRetrieverTheme</item>
+
+  </style>
+
+</resources>
