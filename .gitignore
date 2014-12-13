@@ -5,3 +5,9 @@
 #VM crash
 hs_err_pid*
 bin/
+
+#libraries
+
+android-support-v7-appcompat/
+google-play-services_lib/
+samples/

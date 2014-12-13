@@ -23,10 +23,10 @@ public class SQLconnect extends AsyncTask<String, Void, Void> {
 			String tfDescription = (String) params[0];
 			String tfExpirationDate = (String) params[1];
 			String linker = (String) params[2];
-			//String lat = (String) params[3];
-			//String longit = (String) params[4];
-			// Double latitude = loc.getLatitude();
-			// Double longitude = loc.getLongitude();
+			String latitude = (String) params[3];
+			String longitude = (String) params[4];
+			//Double latitude = loc.getLatitude();
+			//Double longitude = loc.getLongitude();
 			// String link =
 			// "http://userpages.umbc.edu/~mcpat1/331/androidSQLSubmitPage.php?tfDescription="
 			// +tfDescription;//+"&tfExpirationDate="+tfExpirationDate+"&linker="+linker+"&latitude="+latitude+"&longitude="+longitude;
@@ -34,7 +34,7 @@ public class SQLconnect extends AsyncTask<String, Void, Void> {
 			HttpClient client = new DefaultHttpClient();
 			HttpGet request = new HttpGet(
 					"http://userpages.umbc.edu/~mcpat1/331/androidSQLSubmitPage.php?tfDescription="
-							+ tfDescription + "&tfExpirationDate="+tfExpirationDate+"&linker="+linker);
+							+ tfDescription + "&tfExpirationDate="+tfExpirationDate+"&linker="+linker+"&latitude="+latitude+"&longitude="+longitude);
 			client.execute(request);
 
 		} catch (Exception e) {

@@ -1,20 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="android.location.LocationListener"/>
-<fullyQualifiedTypeName name="java.security.acl.LastOwnerException"/>
-<fullyQualifiedTypeName name="android.os.Bundle"/>
-<fullyQualifiedTypeName name="android.content.Context"/>
-<fullyQualifiedTypeName name="android.location.LocationManager"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.GoogleMap"/>
-<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
-<fullyQualifiedTypeName name="com.example.CulturalRetriever.R.layout"/>
-<fullyQualifiedTypeName name="android.net.wifi.p2p.WifiP2pManager.ActionListener"/>
-<fullyQualifiedTypeName name="java.util.Timer"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.model.Polyline"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.model.PolylineOptions"/>
-<fullyQualifiedTypeName name="android.location.Location"/>
-<fullyQualifiedTypeName name="com.google.android.gms.maps.model.LatLng"/>
-<fullyQualifiedTypeName name="com.example.CulturalRetriever.LocationListener"/>
-<fullyQualifiedTypeName name="java.util.TimerTask"/>
-<fullyQualifiedTypeName name="com.example.CulturalRetriever.GoActive.MoveBeat"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>
