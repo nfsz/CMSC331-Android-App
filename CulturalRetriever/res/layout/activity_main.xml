@@ -2,9 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/project2_background"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp" 
-    android:background="@drawable/project2_background" >
+    android:paddingRight="16dp" >
 
     <Button
         android:id="@+id/button_view_map"
@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"
         android:onClick="viewMap"
         android:text="@string/button_view_map" />
-    
+
     <Button
         android:id="@+id/button_go_active"
         android:layout_width="wrap_content"
@@ -29,26 +29,82 @@
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"  >
+        android:layout_centerVertical="true" >
+        
+                <ImageButton
+            android:id="@+id/mainImageButton1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_go_active"
+            android:onClick="goActive"
+            android:src="@drawable/ic_action_go_active" />
+                
+                <ImageButton
+            android:id="@+id/mainImageButton2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_landmark_it"
+            android:onClick="goLandmarkIt"
+            android:src="@drawable/ic_action_landmark_it" />
 
+
+</ViewFlipper>
+    <ViewFlipper
+        android:id="@+id/piccontainer"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
         <ImageButton
             android:id="@+id/imageButton1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:contentDescription="@string/button_go_active"
-            android:onClick="goActive"
-            android:src="@drawable/ic_action_go_active"
-             />
+ />
 
         <ImageButton
             android:id="@+id/imageButton2"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:contentDescription="@string/button_landmark_it"
-            android:onClick="goLandmarkIt"
-            android:src="@drawable/ic_action_landmark_it" />
-    </ViewFlipper>
+    />
 
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_go_active"
+      />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_landmark_it"
+          />
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_go_active"
+ />
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_landmark_it"
+ />
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/button_go_active"
+            android:onClick="goActive"
+            android:src="@drawable/ic_action_go_active" />
+    </ViewFlipper>
 
     <Button
         android:layout_width="wrap_content"

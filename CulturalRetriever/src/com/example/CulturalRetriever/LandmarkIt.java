@@ -83,7 +83,7 @@ public class LandmarkIt extends Activity implements LocationListener {
 			String longitude =  Double.toString(loc.getLongitude());
 			String latitude = Double.toString(loc.getLatitude());
 			StringBuilder expDate = new StringBuilder();
-			expDate.append(year).append("-").append(month + 1).append("-").append(day);
+			expDate.append(year).append("-").append(month).append("-").append(day);
 			
 			new SQLconnect().execute(desc, expDate.toString(), linker, latitude, longitude);
 		}catch(Exception e){}
@@ -156,10 +156,10 @@ public class LandmarkIt extends Activity implements LocationListener {
 
 	   @Override
 	   public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-	      // TODO Auto-generated method stub
-	      // arg1 = year
-	      // arg2 = month
-	      // arg3 = day
+	      year = arg1;// arg1 = year
+	      month = arg2+1; // arg2 = month
+	      day = arg3;// arg3 = day
+
 	      showDate(arg1, arg2+1, arg3);
 	   }
 	   };
