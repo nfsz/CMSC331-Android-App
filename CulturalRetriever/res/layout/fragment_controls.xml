@@ -5,7 +5,6 @@
     android:orientation="vertical"
     tools:context="com.play.FragmentPlayMusic" >
 
-
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -20,24 +19,24 @@
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/btn_star_big_on" />
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_go_active" />
 
             <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/stop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@android:drawable/ic_delete" />
 
             <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Timer" />
+                android:id="@+id/timer"
+                android:layout_marginLeft="30dp"
+                android:paddingTop="10dip"
+                android:text="00:00:00"
+                android:textSize="30sp" />
 
+            <TextView
+                android:id="@+id/timerMs"
+                android:text=".0"
+                android:textSize="20sp" />
         </TableRow>
     </TableLayout>
 
