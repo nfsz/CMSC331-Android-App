@@ -110,28 +110,6 @@ public final class R {
 		public static final int powered_by_google_light = 0x7f020059;
 	}
 	public static final class id {
-<<<<<<< HEAD
-		public static final int book_now = 0x7f090010;
-		public static final int buyButton = 0x7f09000a;
-		public static final int buy_now = 0x7f09000f;
-		public static final int buy_with_google = 0x7f09000e;
-		public static final int classic = 0x7f090011;
-		public static final int grayscale = 0x7f090012;
-		public static final int holo_dark = 0x7f090005;
-		public static final int holo_light = 0x7f090006;
-		public static final int hybrid = 0x7f090004;
-		public static final int match_parent = 0x7f09000c;
-		public static final int monochrome = 0x7f090013;
-		public static final int none = 0x7f090000;
-		public static final int normal = 0x7f090001;
-		public static final int production = 0x7f090007;
-		public static final int sandbox = 0x7f090008;
-		public static final int satellite = 0x7f090002;
-		public static final int selectionDetails = 0x7f09000b;
-		public static final int strict_sandbox = 0x7f090009;
-		public static final int terrain = 0x7f090003;
-		public static final int wrap_content = 0x7f09000d;
-=======
 		public static final int adjust_height = 0x7f0c0009;
 		public static final int adjust_width = 0x7f0c000a;
 		public static final int book_now = 0x7f0c0019;
@@ -155,10 +133,9 @@ public final class R {
 		public static final int strict_sandbox = 0x7f0c0014;
 		public static final int terrain = 0x7f0c000f;
 		public static final int wrap_content = 0x7f0c0018;
->>>>>>> 7a42ca2542b8179f99f226854a525f29ace82118
 	}
 	public static final class integer {
-		public static final int google_play_services_version = 0x7f0a0000;
+		public static final int google_play_services_version = 0x7f090000;
 	}
 	public static final class raw {
 		public static final int gtm_analytics = 0x7f050001;
